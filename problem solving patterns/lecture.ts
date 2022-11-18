@@ -205,3 +205,83 @@ const countUniqueValues = (nums: number[]): number =>
 console.log(countUniqueValues([1,2,3,4,4,4,7,7,12,12,13]));
 console.log(countUniqueValues([1,1,1,1,1,2]));
 console.log(countUniqueValues([-2,-1,-1,0,1]));
+
+// Sliding Window 
+// Idea: Create a range of data that is reused to determine our end goal
+// Purpose: Avoid nested loops which can result in O(n^2) time complexity
+
+const maxSubarraySum = (arr: number[], num: number): number | null =>
+{
+  if(num > arr.length)
+  {
+    return null;
+  }
+  let max: number = -Infinity
+  for(let counter: number = 0; counter < arr.length - num + 1; counter++)
+  {
+    let temp: number = 0;
+    for(let counter2: number = 0; counter < num; counter++)
+    {
+      temp += arr[counter + counter2];
+    }
+    if(temp > max)
+    {
+      max = temp;
+    }
+  }
+  return max;
+}
+
+const maxSubarraySum2 = (arr:number [], num: number): number| null =>
+{
+  if(num > arr.length)
+  {
+    return null;
+  }
+  let max = 0;
+  let tempMax: number = 0;
+  for(let counter: number = 0; counter < num; counter++)
+  {
+    max += arr[counter];
+  }
+  tempMax = max;
+  for(let counter: number = num; counter < arr.length; counter++)
+  {
+    tempMax = tempMax - arr[counter-num] + arr[counter];
+    max = Math.max(max, tempMax);
+  }
+  return max;
+}
+
+console.log(maxSubarraySum2([2, 6, 9, 2, 1, 8, 5, 6, 3], 3));
+console.log(maxSubarraySum2([2, 6, 9, 2, 1, 8, 5, 6, 3, 10, 1, 34, 40, 2, 19, 22, 20, 2, 9, 19, 10, 20, 11, 30, 19, 19, 19, 2, 32, 10, 19, 9, 22, 9, 5, 19], 6));
+console.log(maxSubarraySum2([2, 6, 9, 2, 1, 8, 5, 6, 3, 1, 2, 6, 10, 2, 1, 2, 7, 9, 1, 3, 9, 8], 4));
+
+// Divide and Conquer
+// Idea: Divide data into subdatas 
+// Purpose: Avoid inner loops which results in O(n^2) time complexity
+
+const binarySearch = (arr: number[], val: number): number =>
+{
+  let min: number = 0;
+  let max: number = arr.length -1;
+  while(min <= max)
+  {
+    let middle: number = Math.floor((min+max)/2);
+    let currentElement: number = arr[middle];
+    if(arr[middle] < val)
+    {
+      min = middle+1;
+    }
+    else if(arr[middle] > val)
+    {
+      max = middle - 1;
+    }
+    else
+    {
+      return middle
+    }
+  }
+  return -1;
+}
+
