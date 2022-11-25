@@ -261,27 +261,27 @@ console.log(maxSubarraySum2([2, 6, 9, 2, 1, 8, 5, 6, 3, 1, 2, 6, 10, 2, 1, 2, 7,
 // Idea: Divide data into subdatas 
 // Purpose: Avoid inner loops which results in O(n^2) time complexity
 
-const binarySearch = (arr: number[], val: number): number =>
-{
-  let min: number = 0;
-  let max: number = arr.length -1;
-  while(min <= max)
-  {
-    let middle: number = Math.floor((min+max)/2);
-    let currentElement: number = arr[middle];
-    if(arr[middle] < val)
-    {
-      min = middle+1;
-    }
-    else if(arr[middle] > val)
-    {
-      max = middle - 1;
-    }
-    else
-    {
-      return middle
-    }
-  }
-  return -1;
-}
+// const binarySearch = (arr: number[], val: number): number =>
+// {
+//   let min: number = 0;
+//   let max: number = arr.length -1;
+//   while(min <= max)
+//   {
+//     let middle: number = Math.floor((min+max)/2);
+//     let currentElement: number = arr[middle];
+//     if(arr[middle] < val)
+//     {
+//       min = middle+1;
+//     }
+//     else if(arr[middle] > val)
+//     {
+//       max = middle - 1;
+//     }
+//     else
+//     {
+//       return middle
+//     }
+//   }
+//   return -1;
+// }
 
