@@ -7,6 +7,7 @@
 // Use a pivot point to divide the array into subarrays and sort both sides of the 
 // pivot point finding new pivot points. 
 
+// Note: Worst case happens when the array is sorted so in theory we can make quick sort O(n) 
 
 const quickSort = (nums: number[], left: number, right:number): number[] =>
 {
