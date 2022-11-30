@@ -9,6 +9,8 @@
 
 // Note: Worst case happens when the array is sorted so in theory we can make quick sort O(n) 
 
+// In theory Quick Sort is the fastest algorithm since worse case is O(n) with O(1) space
+
 const quickSort = (nums: number[], left: number, right:number): number[] =>
 {
   if(left < right)

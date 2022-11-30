@@ -14,7 +14,6 @@ const binarySearch = (nums: number[], target: number): number =>
   let start: number = 0;
   let end: number = nums.length-1;
   let middle: number = Math.floor((start + end) / 2);
-  
   while(nums[middle] !== target && start <= end)
   {
     if(target < nums[middle]) end = middle-1;
@@ -24,6 +23,8 @@ const binarySearch = (nums: number[], target: number): number =>
   
   return nums[middle] === target ? middle : -1;
 }
+
+
 
 // String search
 
@@ -41,3 +42,16 @@ const naiveStringSearch = (longString: string, pattern: string): number =>
   return count;
 }
 
+const populateBinaryTest = (range: number): number[] =>
+{
+  let result: number[] = [];
+  for(let counter: number = 1; counter < range + 1; counter++)
+  {
+    result.push(counter);
+  }
+
+  return result
+}
+
+// Test 1
+console.log(binarySearch(populateBinaryTest(27), 19));
