@@ -190,6 +190,7 @@ class DoublyLinkedListEngine<T>
     {
       let prevNode: DoublyLinkedListNode<T> | null = this.get(index-1);
       let afterNode: DoublyLinkedListNode<T> | null = prevNode!.next!.next;
+      
       removedNode = prevNode!.next;
       removedNode!.next = null;
       removedNode!.prev = null;
@@ -242,13 +243,12 @@ class DoublyLinkedListEngine<T>
     else
     {
       let traversingNode: DoublyLinkedListNode<T> | null = this.head;
-      
-      this.head = this.tail;
-      this.tail = traversingNode;
-      
       let prevNode: DoublyLinkedListNode<T> | null = null;
       let nextNode: DoublyLinkedListNode<T> | null = null;
-      
+
+      this.head = this.tail;
+      this.tail = traversingNode;
+            
       for(let counter: number = 0; counter < this.length; counter++)
       {
         nextNode = traversingNode!.next;
